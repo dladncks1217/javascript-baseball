@@ -7,7 +7,11 @@ class GameMachine {
     this.#answerNumber = makeRandomNumber();
   }
 
-  // 정답과 입력값 비교 함수
+  getResult(input, getStrikeCount, getBall) {
+    const strikeCount = getStrikeCount(this.#answerNumber, input);
+    const ballCount = getBall(this.#answerNumber, input, strike);
+    return { strike: strikeCount, ball: ballCount };
+  }
 }
 
 module.exports = GameMachine;

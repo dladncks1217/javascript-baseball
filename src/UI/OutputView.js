@@ -14,6 +14,16 @@ const OutputView = {
     Console.print(MESSAGE.BALL_COUNT);
   },
 
+  printballCount(strike, ball) {
+    const [ballCount, strikeCount] = [
+      MESSAGE.BALL_COUNT(ball),
+      MESSAGE.STRIKE_COUNT(strike),
+    ];
+    if (ball === 0 && strike === 0) return Console.print(MESSAGE.NOTHING);
+    if (ball === 0 && strike > 0) return Console.print(`${strikeCount}`);
+    return Console.print(`${ballCount} ${strikeCount}`);
+  },
+
   endGame() {
     Console.print(MESSAGE.GAME_END);
   },
