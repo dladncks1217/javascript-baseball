@@ -4,13 +4,19 @@ class GameMachine {
   #answerNumber;
 
   constructor() {
-    this.#answerNumber = makeRandomNumber();
+    this.#answerNumber = String(makeRandomNumber());
   }
 
   getResult(input, getStrikeCount, getBall) {
     const strikeCount = getStrikeCount(this.#answerNumber, input);
-    const ballCount = getBall(this.#answerNumber, input, strike);
+    const ballCount = getBall(this.#answerNumber, input, strikeCount);
+
     return { strike: strikeCount, ball: ballCount };
+  }
+
+  isFinishedGame(input) {
+    if (input === this.#answerNumber) return true;
+    return false;
   }
 }
 
