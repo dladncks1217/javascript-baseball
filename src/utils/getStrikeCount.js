@@ -1,6 +1,6 @@
 const getStrikeCount = (answer, input) => {
   let strikeCount = 0;
-  answer.forEach((value, index) => {
+  answer.split('').forEach((value, index) => {
     if (value === input[index]) strikeCount += 1;
   });
   return strikeCount;
