@@ -21,6 +21,7 @@ const OutputView = {
     ];
     if (ball === 0 && strike === 0) return Console.print(MESSAGE.NOTHING);
     if (ball === 0 && strike > 0) return Console.print(`${strikeCount}`);
+    if (ball > 0 && strike === 0) return Console.print(`${ballCount}`);
     return Console.print(`${ballCount} ${strikeCount}`);
   },
 
@@ -29,7 +30,7 @@ const OutputView = {
   },
 
   printError() {
-    Console.print(MESSAGE.INPUT_ERROR);
+    Console.print(MESSAGE.EXCEPTION_QUIT);
   },
 };
 
