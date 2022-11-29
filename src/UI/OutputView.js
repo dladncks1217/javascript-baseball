@@ -28,10 +28,6 @@ const OutputView = {
   endGame() {
     Console.print(MESSAGE.GAME_END);
   },
-
-  printError() {
-    Console.print(MESSAGE.EXCEPTION_QUIT);
-  },
 };
 
 module.exports = OutputView;

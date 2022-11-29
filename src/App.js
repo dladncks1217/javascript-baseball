@@ -4,6 +4,7 @@ const InputView = require('./UI/InputView');
 const OutputView = require('./UI/OutputView');
 const getBallCount = require('./utils/getBallCount');
 const getStrikeCount = require('./utils/getStrikeCount');
+const throwError = require('./utils/throwError');
 const verifyNumber = require('./utils/verifyNumber');
 
 class App {
@@ -11,8 +12,12 @@ class App {
 
   play() {
     OutputView.gameStart();
+    return this.gameSetting();
+  }
+
+  gameSetting() {
     this.#myGame = new GameMachine();
-    this.inputMyNumber();
+    return this.inputMyNumber();
   }
 
   inputMyNumber() {
@@ -34,17 +39,21 @@ class App {
       getBallCount
     );
     OutputView.printballCount(strike, ball);
-    if (this.#myGame.isFinishedGame(myInput)) return this.quitGame();
+    if (this.#myGame.isFinishedGame(myInput)) return this.retryCheck();
     return this.inputMyNumber();
   }
 
-  quitGame() {
+  retryCheck() {
     OutputView.endGame();
-    return Console.close();
+    InputView.inputRetryOrQuit((input) => {
+      if (input === '1') return this.gameSetting();
+      if (input === '2') return Console.close();
+      return throwError();
+    });
   }
 
   errorQuitGame() {
-    OutputView.printError();
+    throwError();
     return Console.close();
   }
 }
