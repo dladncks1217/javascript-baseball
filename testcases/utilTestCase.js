@@ -16,6 +16,8 @@ const utilTestCase = {
   strikeResult: [1, 0, 2, 1],
   ballResult: [2, 0, 0, 1],
   makeRandomNumberTest: ['', '', '', '', ''], // 5번 테스트할라는데 어케하는지 알아보기 (인자 없는경우)
+  verifyNumberTest: ['123', '422', '999', '23e', '1234'],
+  verifyNumberResult: [true, false, false, false, false],
 };
 
 module.exports = utilTestCase;
