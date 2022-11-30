@@ -22,13 +22,8 @@ class App {
 
   inputMyNumber() {
     InputView.inputMyAnswer((userInput) => {
-      try {
-        if (verifyNumber(userInput)) {
-          return this.getResult(userInput);
-        }
-      } catch (err) {
-        return this.errorQuitGame();
-      }
+      if (verifyNumber(userInput)) return this.getResult(userInput);
+      return this.errorQuitGame();
     });
   }
 
@@ -54,7 +49,6 @@ class App {
 
   errorQuitGame() {
     throwError();
-    return Console.close();
   }
 }
 

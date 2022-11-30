@@ -1,5 +1,7 @@
+const MESSAGE = require('../constants/constants');
+
 const throwError = () => {
-  throw new Error(MESSAGE.EXCEPTION_QUIT);
+  throw new Error(MESSAGE.INPUT_ERROR);
 };
 
 module.exports = throwError;
