@@ -4,6 +4,7 @@ const InputView = require('./UI/InputView');
 const OutputView = require('./UI/OutputView');
 const getBallCount = require('./utils/getBallCount');
 const getStrikeCount = require('./utils/getStrikeCount');
+const makeRandomNumber = require('./utils/makeRandomNumber');
 const throwError = require('./utils/throwError');
 const verifyNumber = require('./utils/verifyNumber');
 
@@ -16,7 +17,7 @@ class App {
   }
 
   gameSetting() {
-    this.#myGame = new GameMachine();
+    this.#myGame = new GameMachine(makeRandomNumber());
     return this.inputMyNumber();
   }
 

@@ -3,8 +3,8 @@ const makeRandomNumber = require('../utils/makeRandomNumber');
 class GameMachine {
   #answerNumber;
 
-  constructor() {
-    this.#answerNumber = String(makeRandomNumber());
+  constructor(input) {
+    this.#answerNumber = input;
   }
 
   getResult(input, getStrikeCount, getBall) {
