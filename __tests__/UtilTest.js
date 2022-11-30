@@ -8,23 +8,21 @@ const utilTestCase = require('../testcases/utilTestCase');
 describe('유틸함수 테스트 - 볼 스트라이크 수 확인 테스트', () => {
   test.each(
     utilTestCase.strikeCountTestCase.map((data, index) => {
-      data.push(index);
-      return [data];
+      return [data, index];
     })
-  )('스트라이크 개수 유틸 함수', (input) => {
+  )('스트라이크 개수 유틸 함수', (input, index) => {
     expect(getStrikeCount(input[0], input[1])).toBe(
-      utilTestCase.strikeResult[input[2]]
+      utilTestCase.strikeResult[index]
     );
   });
 
   test.each(
     utilTestCase.ballCountTestCase.map((data, index) => {
-      data.push(index);
-      return [data];
+      return [data, index];
     })
-  )('볼 개수 유틸 함수', (input) => {
+  )('볼 개수 유틸 함수', (input, index) => {
     expect(getBallCount(input[0], input[1], input[2])).toBe(
-      utilTestCase.ballResult[input[3]]
+      utilTestCase.ballResult[index]
     );
   });
 });
@@ -47,13 +45,10 @@ describe('기타 유틸함수 테스트', () => {
 
   test.each(
     utilTestCase.verifyNumberTest.map((data, index) => {
-      const tests = [data];
-      tests.push(index);
-      return [tests];
+      return [data, index];
     })
-  )('입력 번호값 검증 함수', (input) => {
-    expect(verifyNumber(input[0])).toBe(
-      utilTestCase.verifyNumberResult[input[1]]
-    );
+  )('입력 번호값 검증 함수', (input, index) => {
+    console.log(input, index);
+    expect(verifyNumber(input)).toBe(utilTestCase.verifyNumberResult[index]);
   });
 });
