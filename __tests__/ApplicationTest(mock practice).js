@@ -50,4 +50,29 @@ describe('숫자 야구 게임', () => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
     });
   });
+
+  test('오류 발생', () => {
+    const randomNumber = [2, 3, 4];
+    const answers = ['123', '235', 'e34'];
+    const resultMessages = [
+      '2볼',
+      '2스트라이크',
+      '[ERROR] 잘못된 값을 입력하셨습니다. 게임이 종료됩니다.',
+    ];
+
+    const logSpy = getLogSpy();
+    mockQuestoin(answers);
+    mockRandoms(randomNumber);
+
+    // const app = new App();
+    // app.play();
+
+    // resultMessages.forEach((output) => {
+    //   expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
+    // });
+    expect(() => {
+      const app = new App();
+      app.play();
+    }).toThrow();
+  });
 });
